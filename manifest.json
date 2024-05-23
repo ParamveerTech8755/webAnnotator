@@ -4,13 +4,13 @@
   "name":"Test",
   "description": "Annotate web pages with notes and highlights",
   "icons":{
-    "512":"icon.png",
-    "16": "icon-16.png"
+    "512":"icons/icon.png",
+    "16": "icons/icon-16.png"
   },
   "browser_action":{
   "default_icon":{
-      "512":"icon.png",
-      "16": "icon-16.png"
+      "512":"icons/icon.png",
+      "16": "icons/icon-16.png"
     }
   },
   "content_scripts":[
@@ -25,6 +25,7 @@
   },
   "permissions":[
     "tabs",
-    "activeTab"
+    "activeTab",
+    "storage"
   ]
 }

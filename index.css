@@ -7,7 +7,7 @@
 	cursor: text;
 }
 
-.annotation-container span{
+.annotation-container .input{
 	min-width: 4rem;
 	border: 1px dotted #bbb;
 	border-radius: 8px;
@@ -15,17 +15,29 @@
 	outline: 0px solid transparent;
 	color: inherit;
 }
-.close-btn{
-	align-self: end;
+.btn{
 	outline:none;
 	border-none
 	background-color: transparent;
-	margin: 1px;
-	padding: 1px;
-	color: red;
+	margin: 1px 0;
+	padding: 1px 0;
 }
-.close-btn:hover{
+.btn-wrapper{
+/*	position: relative;*/
+	display: flex;
+	justify-content: flex-end;
+	gap: 6px;
+}
+.btn:hover{
 	background-color: #ddd;
-	color: #222;
 	cursor: pointer;
+}
+.save{
+	font-size: 0.8rem;
+}
+.save:hover{
+	color: navy;
+}
+.close:hover{
+	color: red;
 }
