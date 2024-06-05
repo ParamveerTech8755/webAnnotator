@@ -22,7 +22,11 @@ function handleMessages({type, payload = null}, sender, sendResponse){
 	}
 	else if(type === 'SAVE'){
 		chrome.storage.local.get('annotationData', ({annotationData}) => {
-			annotationData.push(payload)
+			let index = annotationData.findIndex(item => item.id === payload.id)
+			if(index > 0)
+				annotationData[index] = payload
+			else
+				annotationData.push(payload)
 			chrome.storage.local.set({'annotationData': annotationData}, () => sendResponse('data saved'))
 		})
 
