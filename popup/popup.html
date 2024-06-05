@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Highlighter</title>
+  <style>
+    body { width: 300px; padding-bottom:10px; font-family: Arial, sans-serif; border-radius: 16px; background-color: #ccc }
+    button { width: 30px; height: 30px; margin: 5px; border: none; border-radius: 50%; cursor: pointer; }
+    #highlights-list{
+      max-height: 30vh;
+      overflow-y: auto;
+      list-style-type: none;
+      padding-left: 4px;
+    }
+    #highlights-list li{
+      margin: 2px auto;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background-color: #999;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center">Annotix</h2>
+  <h3>Choose a highlight color:</h3>
+  <button class="highlight" style="background-color: #ffff00;" data-color="#ffff00"></button>
+  <button class="highlight" style="background-color: #a0ffff;" data-color="#a0ffff"></button>
+  <button class="highlight" style="background-color: #ffa0a0;" data-color="#ffa0a0"></button>
+  <button class="highlight" style="background-color: #a0ffa0;" data-color="#a0ffa0"></button>
+
+  <h3>Choose a text color:</h3>
+  <button class="text" style="background-color: #000;" data-color="#000"></button>
+  <button class="text" style="background-color: #fff;" data-color="#fff"></button>
+  <button class="text" style="background-color: #E7473C;" data-color="#E7473C"></button>
+  <button class="text" style="background-color: #00ABE4;" data-color="#00ABE4"></button>
+
+  <h3>Highlights</h3>
+  <ul id="highlights-list"></ul>
+
+  <script src="popup.js"></script>
+</body>
+</html>

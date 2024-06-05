@@ -1,21 +1,39 @@
+chrome.runtime.onInstalled.addListener(() => {
+  alert('Extension installed:\nDouble click anywhere to annotate and select text to highlight')
+  chrome.storage.sync.set({ highlights: [] })
+});
+
 chrome.runtime.onMessage.addListener(handleMessages)
 
 function handleMessages({type, payload = null}, sender, sendResponse){
-	const key = `${sender.url}-annotation-data`
-	if(type === 'LOADED'){
 
-		chrome.storage.local.get(key, resArr => {
-			if(resArr.length !== 0){
+	if(type === 'LOADED'){
+		// console.log(key)
+		chrome.storage.local.get('annotationData', res => {
+			if(res){
 				// alert('loaded from mem')
-				sendResponse(resArr)
+				const response = res.annotationData.filter(item => item.url === sender.url)
+				sendResponse({annotationData: response})
+			}
+			else{
+				sendResponse({annotationData: []})
 			}
 		})
-		// chrome.storage.local.get('key', res => sendResponse(res))
 	}
 	else if(type === 'SAVE'){
-		chrome.storage.local.set({key: payload}, () => {
-			sendResponse('data saved')
+		chrome.storage.local.get('annotationData', ({annotationData}) => {
+			annotationData.push(payload)
+			chrome.storage.local.set({'annotationData': annotationData}, () => sendResponse('data saved'))
 		})
-		// chrome.storage.local.set({'key': [{text: 'hello', x: 1, y: 2}, {text: 'bye', x: 100, y: 200}]}, () => alert('value set'))
+
+
 	}
+	else if(type === 'DELETE'){
+		chrome.storage.local.get('annotationData', ({annotationData}) => {
+			const annotations = annotationData.filter(item => item.id !== payload.id)
+			chrome.storage.local.set({'annotationData': annotations}, () => sendResponse('item deleted'))
+		})
+	}
+
+	return true
 }

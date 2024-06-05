@@ -1,13 +1,14 @@
 {
   "manifest_version":2,
   "version":"1.0",
-  "name":"Test",
+  "name":"Annotix",
   "description": "Annotate web pages with notes and highlights",
   "icons":{
     "512":"icons/icon.png",
     "16": "icons/icon-16.png"
   },
   "browser_action":{
+  "default_popup": "popup/popup.html",
   "default_icon":{
       "512":"icons/icon.png",
       "16": "icons/icon-16.png"
@@ -16,8 +17,8 @@
   "content_scripts":[
     {
      "matches":["<all_urls>"],
-     "js":["main.js"],
-     "css":["index.css"]
+     "js":["contentScripts/main.js", "contentScripts/highlight.js"],
+     "css":["contentScripts/index.css"]
     }
   ],
   "background":{
@@ -27,5 +28,6 @@
     "tabs",
     "activeTab",
     "storage"
-  ]
+  ],
+  "web_accessible_resources": ["images/highlight.png"]
 }
