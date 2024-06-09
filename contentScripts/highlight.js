@@ -24,7 +24,7 @@ document.addEventListener('mousedown', event => {
   }
 })
 
-document.addEventListener('mouseup', () => {
+document.addEventListener('mouseup', (event) => {
   const selection = window.getSelection();
   const selectedText = selection.toString().trim();
 
@@ -37,10 +37,11 @@ document.addEventListener('mouseup', () => {
     img.style.width = "20px"
 
     const rangeBounds = range.getBoundingClientRect()
+    // console.log(rangeBounds)
     img.display = 'inline'
     img.style.position = 'absolute'
-    img.style.top = `${rangeBounds.top}px`
-    img.style.left = rangeBounds.left + rangeBounds.width + 20 + 'px'
+    img.style.top = `${event.pageY-10}px`
+    img.style.left = event.pageX  + 20 + 'px'
     document.body.appendChild(img)
 
     img.onclick = () => {

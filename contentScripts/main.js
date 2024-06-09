@@ -47,6 +47,9 @@ function createField(content, contentEditable){
 		span.style.whiteSpace = "pre-wrap"
 		span.classList.add('input')
 	}
+	else{
+		span.classList.add('extension-btn-wrapper')
+	}
 	if(content){
 		const text = document.createTextNode(content)
 		span.appendChild(text)

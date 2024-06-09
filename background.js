@@ -21,7 +21,7 @@ function handleMessages({type, payload = null}, sender, sendResponse){
 		})
 	}
 	else if(type === 'SAVE'){
-		chrome.storage.local.get('annotationData', ({annotationData}) => {
+		chrome.storage.local.get('annotationData', ({annotationData = []}) => {
 			let index = annotationData.findIndex(item => item.id === payload.id)
 			if(index > 0)
 				annotationData[index] = payload
@@ -33,7 +33,7 @@ function handleMessages({type, payload = null}, sender, sendResponse){
 
 	}
 	else if(type === 'DELETE'){
-		chrome.storage.local.get('annotationData', ({annotationData}) => {
+		chrome.storage.local.get('annotationData', ({annotationData = []}) => {
 			const annotations = annotationData.filter(item => item.id !== payload.id)
 			chrome.storage.local.set({'annotationData': annotations}, () => sendResponse('item deleted'))
 		})
