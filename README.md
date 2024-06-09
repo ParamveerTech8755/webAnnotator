@@ -3,14 +3,14 @@ Annotix
 A minimilistic web annotating and highlighting tool.
 
 How to use:
----------------------Annotate---------------------
+-------Annotate-------
 1) Double click anywhere on any webpage to add text/annotate
 2) Click 'save' to retain it for subsequent sessions
 3) Click 'x' to cancel the annotation and remove it from the page immediately
----------------------Highlight---------------------
+-------Highlight-------
 4) Select any text(currently the extension only supports plaintext) and click on the highlight icon which emerges next to the selected text
 5) Click elsewhere to cancel the highlighting action
----------------------Customize---------------------
+-------Customize-------
 6) Click on Annotix icon to choose highlighter as well as annotation text colour. 
 
 Salient Features:
